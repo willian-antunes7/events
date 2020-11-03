@@ -1,17 +1,11 @@
-//
-//  EventsApp.swift
-//  Events
-//
-//  Created by Willian Antunes on 28/10/20.
-//
-
+import ComposableArchitecture
 import SwiftUI
 
 @main
 struct EventsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(store: Store(initialState: EventListState(events: []), reducer: eventListReducer, environment: EventListEnvironment(facade: EventFacade())))
         }
     }
 }
