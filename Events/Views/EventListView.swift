@@ -5,6 +5,11 @@ import SwiftUI
 struct EventListView: View {
     let store: Store<EventListState, EventListAction>
     
+    init(store: Store<EventListState, EventListAction>) {
+        self.store = store
+        UINavigationBar.appearance().tintColor = .systemPink
+    }
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {

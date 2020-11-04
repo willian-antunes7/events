@@ -193,7 +193,6 @@
 			children = (
 				7DB431F625491A50002DA3FF /* EventsApp.swift */,
 				7DB431FA25491A53002DA3FF /* Assets.xcassets */,
-				7DB431FF25491A53002DA3FF /* Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -230,6 +229,7 @@
 				7D74112F2552ACDE0017070B /* Views */,
 				7D7411372552ACF90017070B /* SupportingViews */,
 				7D74113B2552AD660017070B /* SupportingFiles */,
+				7DB431FF25491A53002DA3FF /* Info.plist */,
 				7DB431FC25491A53002DA3FF /* Preview Content */,
 			);
 			path = Events;
