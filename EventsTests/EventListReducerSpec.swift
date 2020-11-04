@@ -13,9 +13,28 @@ class EventListReducerSpec: QuickSpec {
                 context("when the request fails") {
                     it("should not change the list of events") {
                         let state = EventListState()
-//                        store = TestStore(initialState: state, reducer: eventListReducer, environment: EventListEnvironment { _ in
-//                            
-//                        })
+                        let facade = EventFacadeMock()
+                        store = TestStore(initialState: state, reducer: eventListReducer, environment: EventListEnvironment(facade: facade))
+                        facade.shouldFail = true
+                        store.assert(
+                            .send(.fetchEvents) { _ in },
+                            .receive(.fetchEventsResult(.failure(.responseError("Expected error on EventFacade!"))))
+                        )
+                    }
+                }
+                context("when the request succeeds") {
+                    it("should change the list of events") {
+                        let state = EventListState()
+                        let facade = EventFacadeMock()
+                        let events = [Event.makeStub(), Event.makeStub()]
+                        store = TestStore(initialState: state, reducer: eventListReducer, environment: EventListEnvironment(facade: facade))
+                        facade.events = events
+                        store.assert(
+                            .send(.fetchEvents) { _ in },
+                            .receive(.fetchEventsResult(.success(events))) {
+                                $0.events = events
+                            }
+                        )
                     }
                 }
             }

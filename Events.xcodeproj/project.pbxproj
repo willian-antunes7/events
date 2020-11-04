@@ -18,13 +18,13 @@
 		7D7411262552ABFA0017070B /* EventListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7411252552ABFA0017070B /* EventListReducer.swift */; };
 		7D74112B2552AC210017070B /* EventDetailsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D74112A2552AC210017070B /* EventDetailsReducer.swift */; };
 		7D7411462552E15B0017070B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7D7411452552E15B0017070B /* README.md */; };
+		7D7411512552E30B0017070B /* EventFacadeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7411502552E30B0017070B /* EventFacadeMock.swift */; };
+		7D7411562552E4C50017070B /* EventFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7411552552E4C50017070B /* EventFactory.swift */; };
 		7D9A679525491DBB005F229E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7D9A679425491DBB005F229E /* ComposableArchitecture */; };
 		7DB431F725491A50002DA3FF /* EventsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB431F625491A50002DA3FF /* EventsApp.swift */; };
 		7DB431F925491A50002DA3FF /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB431F825491A50002DA3FF /* EventListView.swift */; };
 		7DB431FB25491A53002DA3FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DB431FA25491A53002DA3FF /* Assets.xcassets */; };
 		7DB431FE25491A53002DA3FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DB431FD25491A53002DA3FF /* Preview Assets.xcassets */; };
-		7DB4320925491A53002DA3FF /* EventsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4320825491A53002DA3FF /* EventsTests.swift */; };
-		7DB4321425491A53002DA3FF /* EventsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4321325491A53002DA3FF /* EventsUITests.swift */; };
 		7DDA195606BB6B3DAD658F90 /* Pods_Events.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152E0A31E0CA85DD37642 /* Pods_Events.framework */; };
 		7DE8CCFF2550C89900A49407 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE8CCFE2550C89900A49407 /* ApiClient.swift */; };
 		7DE8CD042550C8FF00A49407 /* ApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE8CD032550C8FF00A49407 /* ApiProtocol.swift */; };
@@ -70,6 +70,8 @@
 		7D7411252552ABFA0017070B /* EventListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListReducer.swift; sourceTree = "<group>"; };
 		7D74112A2552AC210017070B /* EventDetailsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsReducer.swift; sourceTree = "<group>"; };
 		7D7411452552E15B0017070B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7D7411502552E30B0017070B /* EventFacadeMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFacadeMock.swift; sourceTree = "<group>"; };
+		7D7411552552E4C50017070B /* EventFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFactory.swift; sourceTree = "<group>"; };
 		7DB431F325491A50002DA3FF /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB431F625491A50002DA3FF /* EventsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsApp.swift; sourceTree = "<group>"; };
 		7DB431F825491A50002DA3FF /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
@@ -77,11 +79,8 @@
 		7DB431FD25491A53002DA3FF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7DB431FF25491A53002DA3FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DB4320425491A53002DA3FF /* EventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7DB4320825491A53002DA3FF /* EventsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTests.swift; sourceTree = "<group>"; };
 		7DB4320A25491A53002DA3FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DB4320F25491A53002DA3FF /* EventsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7DB4321325491A53002DA3FF /* EventsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsUITests.swift; sourceTree = "<group>"; };
-		7DB4321525491A53002DA3FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DE8CCFE2550C89900A49407 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		7DE8CD032550C8FF00A49407 /* ApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProtocol.swift; sourceTree = "<group>"; };
 		7DE8CD082550F66F00A49407 /* ApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
@@ -205,7 +204,6 @@
 				7D7411452552E15B0017070B /* README.md */,
 				7DB431F525491A50002DA3FF /* Events */,
 				7DB4320725491A53002DA3FF /* EventsTests */,
-				7DB4321225491A53002DA3FF /* EventsUITests */,
 				7DB431F425491A50002DA3FF /* Products */,
 				9E7E2F2BC70205459A34FF6B /* Pods */,
 				5E76B33E628CC927B0187F46 /* Frameworks */,
@@ -249,20 +247,12 @@
 		7DB4320725491A53002DA3FF /* EventsTests */ = {
 			isa = PBXGroup;
 			children = (
-				7DB4320825491A53002DA3FF /* EventsTests.swift */,
 				7DB4320A25491A53002DA3FF /* Info.plist */,
+				7D7411502552E30B0017070B /* EventFacadeMock.swift */,
+				7D7411552552E4C50017070B /* EventFactory.swift */,
 				7DE8CD512552425C00A49407 /* EventListReducerSpec.swift */,
 			);
 			path = EventsTests;
-			sourceTree = "<group>";
-		};
-		7DB4321225491A53002DA3FF /* EventsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				7DB4321325491A53002DA3FF /* EventsUITests.swift */,
-				7DB4321525491A53002DA3FF /* Info.plist */,
-			);
-			path = EventsUITests;
 			sourceTree = "<group>";
 		};
 		7DE8CD212551135E00A49407 /* Network */ = {
@@ -537,7 +527,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DE8CD522552425C00A49407 /* EventListReducerSpec.swift in Sources */,
-				7DB4320925491A53002DA3FF /* EventsTests.swift in Sources */,
+				7D7411512552E30B0017070B /* EventFacadeMock.swift in Sources */,
+				7D7411562552E4C50017070B /* EventFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,7 +536,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DB4321425491A53002DA3FF /* EventsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
