@@ -56,8 +56,6 @@ extension EventListAction: Equatable {
             default:
                 return false
             }
-        case let (.refreshingChanged(lhsValue), .refreshingChanged(rhsValue)):
-            return lhsValue == rhsValue
         default:
             return false
         }

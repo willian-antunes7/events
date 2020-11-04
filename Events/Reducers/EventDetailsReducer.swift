@@ -109,7 +109,8 @@ let eventDetailsReducer = Reducer<EventDetailsState, EventDetailsAction, EventDe
                 state.alertText = "Something went wrong!"
             }
         case let .failure(error):
-            print(error)
+            state.alert = true
+            state.alertText = error.localizedDescription
         }
         return .none
     case .dismissAlert:
