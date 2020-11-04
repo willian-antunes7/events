@@ -3,6 +3,7 @@ import Alamofire
 enum ApiRouter: URLRequestConvertible {
     case getEvents
     case getEventDetails(String)
+    case getImageData(String)
     case postCheckin(String, String, String)
     
     var method: HTTPMethod {
@@ -15,17 +16,19 @@ enum ApiRouter: URLRequestConvertible {
     }
 
     private static func baseUrlWithPath(path: String) -> URL {
-        URL(string: "https://5f5a8f24d44d640016169133.mockapi.io/api" + path)!
+        URL(string: "https://5f5a8f24d44d640016169133.mockapi.io/api\(path)")!
     }
 
     var url: URL {
         switch self {
         case .getEvents:
             return ApiRouter.baseUrlWithPath(path: "/events")
-        case .getEventDetails:
-            return ApiRouter.baseUrlWithPath(path: "/events")
-        default:
-            return ApiRouter.baseUrlWithPath(path: "/v1")
+        case let .getEventDetails(id):
+            return ApiRouter.baseUrlWithPath(path: "/events/\(id)")
+        case let .getImageData(url):
+            return URL(string: url)!
+        case .postCheckin:
+            return ApiRouter.baseUrlWithPath(path: "/checkin")
         }
     }
 
@@ -46,11 +49,13 @@ enum ApiRouter: URLRequestConvertible {
 
     private func parameters() -> [String: Any] {
         switch self {
-        case let .getEventDetails(id):
-            return ["id":id]
+        case .getEventDetails(_):
+            return [:]
         case let .postCheckin(eventId, name, email):
             return ["eventId": eventId, "name": name, "email": email]
         case .getEvents:
+            return [:]
+        case .getImageData(_):
             return [:]
         }
     }

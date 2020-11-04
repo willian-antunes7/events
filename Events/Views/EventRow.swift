@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct EventRow: View {
-    
     var event: Event
     
     var body: some View {

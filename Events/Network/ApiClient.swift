@@ -14,6 +14,9 @@ class ApiClient: ApiClientProtocol {
             .responseData { (response: DataResponse<Data, AFError>) in
                 switch response.result {
                 case let .success(apiResponse):
+                    if T.self == Data.self {
+                        callback(.success(apiResponse as! T))
+                    }
                     callback(self.deserializeSuccessResponse(decoder: T.self, data: apiResponse))
                 case let .failure(error):
                     callback(.failure(.responseError(self.getErrorMessage(error: error, data: response.data))))
@@ -32,7 +35,7 @@ class ApiClient: ApiClientProtocol {
 
     private func getErrorMessage(error: Error, data: Data?) -> String {
         if let data = data,
-            let failure = try? JSONDecoder.shared.decode(RequestFailure.self, from: data) {
+            let failure = try? JSONDecoder().decode(RequestFailure.self, from: data) {
             return failure.getReason()
         }
         return error.localizedDescription

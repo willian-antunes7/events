@@ -1,6 +1,5 @@
 import Combine
 import ComposableArchitecture
-import SwiftUI
 
 struct EventListState: Equatable {
     var events: [Event] = []
@@ -15,7 +14,6 @@ enum EventListAction {
 
 struct EventListEnvironment {
     var facade: EventFacadeProtocol
-//    let getEvents: () -> AnyPublisher<[Event], RequestError>
 }
 
 let eventListReducer = Reducer<EventListState, EventListAction, EventListEnvironment> { state, action, environment in
@@ -36,25 +34,3 @@ let eventListReducer = Reducer<EventListState, EventListAction, EventListEnviron
         return .none
     }
 }
-
-struct ContentView: View {
-    let store: Store<EventListState, EventListAction>
-    
-    var body: some View {
-        WithViewStore(store) { viewStore in
-            List {
-                ForEach(viewStore.events, id: \.id) { event in
-                    EventRow(event: event)
-                }
-            }.onAppear(perform: {
-                viewStore.send(.fetchEvents)
-            })
-        }
-    }
-}
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}

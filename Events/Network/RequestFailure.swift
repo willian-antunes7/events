@@ -1,5 +1,4 @@
 import Foundation
-import Rswift
 
 class RequestFailure: Decodable {
     let errors: [String]
