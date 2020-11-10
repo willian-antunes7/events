@@ -6,6 +6,7 @@ target 'Events' do
   use_frameworks!
 
   pod 'Alamofire'
+  pod 'SwiftUIRefresh'
 
   target 'EventsTests' do
     inherit! :search_paths

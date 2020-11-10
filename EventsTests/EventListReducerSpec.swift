@@ -11,14 +11,17 @@ class EventListReducerSpec: QuickSpec {
         describe("store") {
             context("when fetch events is called") {
                 context("when the request fails") {
-                    it("should not change the list of events") {
+                    it("should not change the list of events and alert the user") {
                         let state = EventListState()
                         let facade = EventFacadeMock()
                         store = TestStore(initialState: state, reducer: eventListReducer, environment: EventListEnvironment(facade: facade))
                         facade.shouldFail = true
                         store.assert(
                             .send(.fetchEvents) { _ in },
-                            .receive(.fetchEventsResult(.failure(.responseError("Expected error on EventFacade!"))))
+                            .receive(.fetchEventsResult(.failure(.responseError("Expected error on EventFacade!")))) {
+                                $0.alert = true
+                                $0.alertText = "Expected error on EventFacade!"
+                            }
                         )
                     }
                 }
@@ -33,6 +36,42 @@ class EventListReducerSpec: QuickSpec {
                             .send(.fetchEvents) { _ in },
                             .receive(.fetchEventsResult(.success(events))) {
                                 $0.events = events
+                            }
+                        )
+                    }
+                }
+            }
+            context("when it's refreshing") {
+                context("when the request fails") {
+                    it("should not change the list of events, but change isRefreshing to false and alert the user") {
+                        var state = EventListState()
+                        let facade = EventFacadeMock()
+                        store = TestStore(initialState: state, reducer: eventListReducer, environment: EventListEnvironment(facade: facade))
+                        state.isRefreshing = true
+                        facade.shouldFail = true
+                        store.assert(
+                            .send(.fetchEvents) { _ in },
+                            .receive(.fetchEventsResult(.failure(.responseError("Expected error on EventFacade!")))) {
+                                $0.isRefreshing = false
+                                $0.alert = true
+                                $0.alertText = "Expected error on EventFacade!"
+                            }
+                        )
+                    }
+                }
+                context("when the request succeeds") {
+                    it("should change the list of events") {
+                        var state = EventListState()
+                        let facade = EventFacadeMock()
+                        let events = [Event.makeStub(), Event.makeStub()]
+                        store = TestStore(initialState: state, reducer: eventListReducer, environment: EventListEnvironment(facade: facade))
+                        facade.events = events
+                        state.isRefreshing = true
+                        store.assert(
+                            .send(.fetchEvents) { _ in },
+                            .receive(.fetchEventsResult(.success(events))) {
+                                $0.events = events
+                                $0.isRefreshing = false
                             }
                         )
                     }
@@ -56,6 +95,8 @@ extension EventListAction: Equatable {
             default:
                 return false
             }
+        case let (.refreshingChanged(lhsValue), .refreshingChanged(rhsValue)):
+            return lhsValue == rhsValue
         default:
             return false
         }

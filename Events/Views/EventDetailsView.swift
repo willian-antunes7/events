@@ -61,7 +61,7 @@ struct EventDetailsView: View {
                     }
                     .padding(16)
                     .alert(isPresented: viewStore.binding(get: \.alert, send: .dismissAlert)) {
-                        return Alert(title: Text("Check-in"), message: Text(viewStore.alertText))
+                        return Alert(title: Text("Network failure"), message: Text(viewStore.alertText))
                     }
                     .sheet(isPresented: viewStore.binding(get: \.shareSheetIsPresented, send: .dismissShareSheet)) {
                         ShareSheet(activityItems: ["\(viewStore.title) \(viewStore.formattedDate)"])

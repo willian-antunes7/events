@@ -82,7 +82,8 @@ let eventDetailsReducer = Reducer<EventDetailsState, EventDetailsAction, EventDe
                 .catchToEffect()
                 .map(EventDetailsAction.fetchImageData)
         case let .failure(error):
-            print(error)
+            state.alert = true
+            state.alertText = error.localizedDescription
         }
         return .none
     case let .fetchImageData(result):

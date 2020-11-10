@@ -12,14 +12,17 @@ class EventDetailsReducerSpec: QuickSpec {
         describe("store") {
             context("when fetch event details is called") {
                 context("when the request fails") {
-                    it("should not change the event details") {
+                    it("should not change the event details, but alert the user") {
                         let state = EventDetailsState(id: "12")
                         let facade = EventFacadeMock()
                         store = TestStore(initialState: state, reducer: eventDetailsReducer, environment: EventDetailsEnvironment(facade: facade))
                         facade.shouldFail = true
                         store.assert(
                             .send(.fetchEventDetails) { _ in },
-                            .receive(.fetchEventDetailsResult(.failure(.responseError("Expected error on EventFacade!"))))
+                            .receive(.fetchEventDetailsResult(.failure(.responseError("Expected error on EventFacade!")))) {
+                                $0.alert = true
+                                $0.alertText = "Expected error on EventFacade!"
+                            }
                         )
                     }
                 }

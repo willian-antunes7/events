@@ -1,6 +1,7 @@
 import Combine
 import ComposableArchitecture
 import SwiftUI
+import SwiftUIRefresh
 
 struct EventListView: View {
     let store: Store<EventListState, EventListAction>
@@ -23,8 +24,17 @@ struct EventListView: View {
                         {
                             EventRow(event: event)
                         }
-                    }.navigationBarTitle("Events")
-                }.onAppear(perform: {
+                    }
+                }
+                .navigationBarTitle("Events")
+                .alert(isPresented: viewStore.binding(get: \.alert, send: .dismissAlert)) {
+                    return Alert(title: Text("Network failure"), message: Text(viewStore.alertText))
+                }
+                .pullToRefresh(isShowing: viewStore.binding(get: \.isRefreshing,
+                                                            send: EventListAction.refreshingChanged)) {
+                    viewStore.send(.fetchEvents)
+                }
+                .onAppear(perform: {
                     viewStore.send(.fetchEvents)
                 })
             }
